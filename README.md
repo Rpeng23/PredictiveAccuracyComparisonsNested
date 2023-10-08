@@ -17,7 +17,7 @@ Recursive forecasting (expanding window) involves choosing a sample location (sa
 
 Note that in this example this should give you a total of ($n − k0 - h + 1$) forecast error observations. Suppose you do that across two competing models and obtain two sequences of one-step ahead forecast errors, say $\hat{e}_1$ and $\hat{e}_2$. These are the inputs subsequently used in the test statistics developed in paper.
 
-#The test statistics $S_0$ and $S_{Bar}$
+# The test statistics $S_0$ and $S_{Bar}$
 Suppose you have obtained the sequence of forecast errors associated with the two models. These are then used as inputs to obtain the numerator of the first test statistics $S_0$ as stated in (ET 6). Note that this statistic requires 2 ad-hoc inputs from the user ($\lambda_1$ and $\lambda_2$). So the code should expect these as inputs as well in addition to $\hat{e}_1$ and $\hat{e}_2$. Then, the test statistic also requires a suitable normaliser generically referred to as $\sigma^2$ in (ET 8). 
 
 For a version of the test statistic under conditional homskedasticity one could simply use the expression at the top of page (ET 9) and referred to as $\sigma^2$ hom. It is usually advisable to use the residuals from the larger model to form the $\eta$ (i.e. use $\hat{e}_2$ instead of $\hat{e}_1$). 
@@ -25,4 +25,28 @@ For a version of the test statistic under conditional homskedasticity one could 
 For the version of the test statistic that corrects for heteroskedasticity one needs to use a robust Newey-West type estimator as in Deng and Perron (2008) for instance. To sum-up: given $\hat{e}_1$, $\hat{e}_2$, $\lambda_1$, $\lambda_2$ the program should output the quantity $S_0$. Note that there should be two versions of this depending on which $\sigma$ one chooses to use in (ET 8). For each of these two versions (homoskedasticity, heteroskedasticity) there should also be two versions: one that uses the standard expression in (ET 15) and one that is referred to as the adjusted version that replaces $\hat{e}_2$ with $\bar{e}_{2}$ defined in (ET 33). To sum up the program should output 4 versions of (ET 15).
 
 The second test statistic ($S_{Bar}$) is defined (ET 9) and the code should follow similar principles to above.
+
+**Note that the corresponding p-values will be returned along with the test statistics, with the null hypothesis being the two models having identical predictive power.**
+
+# Code Example
+Suppose we have a dataset *data* (see the *dummy_data_2.xlsx* file in data folder for example) that contains 3 variables, $y$, $x_1$ and $x_2$ of a length of 250. 
+
+For illustration, we consider 1 step ahead prediction and set $\pi_0 = 0.25$ (user could change it manually within 0 and 1 deciding what fraction of sample should be used). In this case, this means *round(250*0.25)* numbers of recursive residuals would be computed. **Note here, R would round up .5 to the nearest EVEN number, while MATLAB would push it far away from 0. Take our case for example, R would round it to 62, while MATLAB would round it to 63.**
+
+`
+ehat1 = recursive_hstep_fast($y$,$x1$,$\pi_0$,1)
+ehat2 = recursive_hstep_fast($y$,cbind($x1$,$x2$),$\pi_0$,1)
+`
+
+This will give back two series of recursive errors with a length of $(250-62-1+1)=188$. Feeding these two series into our program would then calculate the test statistics accordingly.
+
+`
+S0test = Nested_Stats_S0(ehat1, ehat2, lam10, lam20)
+Sbartest = Nested_Stats_Sbar(ehat1, ehat2, lam20, tau0)
+`
+It is note here, lam10 and lam20 correpond to the user-define fraction of recursive residuals used for the computation of test statistics. Tau0 is the fraction to determine the user-chosen range of lam10 over which the average is taken. Normally speaking, all of them should be something within 0 and 1.
+
+
+
+
 
