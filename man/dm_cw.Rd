@@ -18,7 +18,6 @@ A list of  statistics and corresponding P values will be produced.
 It calculates the original DM statistics and the CW adjusted version of DM statistics, including the versions based on a Newey-West type estimator of the long run variance.
 }
 \examples{
-e
 e1<- rnorm(15);
 e2<- rnorm(15);
 temp1 <- dm_cw(e1,e2)

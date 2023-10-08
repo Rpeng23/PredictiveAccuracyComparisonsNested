@@ -4,7 +4,7 @@
 \alias{lr_var}
 \title{Heteroskedastic Long run variance}
 \usage{
-lr_var(u, nlag = min(floor(1.2 * dim(u)[1]^(1/3)), dim(u)[1]), demean = TRUE)
+lr_var(u, nlag = NULL, demean = TRUE)
 }
 \arguments{
 \item{u}{P by K vector of residual series, for which we recommend to use the recursive residuals from larger model.}
@@ -27,10 +27,10 @@ Revision: 3    Date: 5/1/2007
 }
 \examples{
 x<- rnorm(15);
-Newey-West covariance with automatic BW selection
+#Newey-West covariance with automatic BW selection
 lrcov = lr_var(x)
-Newey-West covariance with 10 lags
+#Newey-West covariance with 10 lags
 lrcov = lr_var(x, 10)
-Newey-West covariance with 10 lags and no demeaning
+#Newey-West covariance with 10 lags and no demeaning
 lrcov = lr_var(x, 10, 0)
 }
