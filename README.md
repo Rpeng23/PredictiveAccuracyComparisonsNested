@@ -31,17 +31,19 @@ The second test statistic ($S_{Bar}$) is defined (ET 9) and the code should foll
 # Code Example
 Suppose we have a dataset *data* (see the *dummy_data_2.xlsx* file in data folder for example) that contains 3 variables, $y$, $x_1$ and $x_2$ of a length of 250. 
 
-For illustration, we consider 1 step ahead prediction and set $\pi_0 = 0.25$ (user could change it manually within 0 and 1 deciding what fraction of sample should be used). In this case, this means *round($250*0.25$)* numbers of recursive residuals would be computed. **Note here, R would round up .5 to the nearest EVEN number, while MATLAB would push it far away from 0. Take our case for example, R would round it to 62, while MATLAB would round it to 63.**
+For illustration, we consider 1 step ahead prediction and set $\pi_0 = 0.25$ (user could change it manually within 0 and 1 deciding what fraction of sample should be used). In this case, this means *round(250 x 0.25)* numbers of recursive residuals would be computed. **Note here, R would round up .5 to the nearest EVEN number, while MATLAB would push it far away from 0. Take our case for example, R would round it to 62, while MATLAB would round it to 63.**
 
-`ehat1 = recursive_hstep_fast($y$,$x1$,$\pi_0$,1)`
-`ehat2 = recursive_hstep_fast($y$,cbind($x1$,$x2$),$\pi_0$,1)`
+`ehat1 = recursive_hstep_fast($y$,$x1$,$\pi_0$,1)` \\
+`ehat2 = recursive_hstep_fast($y$,cbind($x1$,$x2$),$\pi_0$,1)`\\
 
 This will give back two series of recursive errors with a length of $(250-62-1+1)=188$. Feeding these two series into our program would then calculate the test statistics accordingly.
 
-`S0test = Nested_Stats_S0(ehat1, ehat2, lam10, lam20)`
-`Sbartest = Nested_Stats_Sbar(ehat1, ehat2, lam20, tau0)`
+`S0test = Nested_Stats_S0(ehat1, ehat2, lam10, lam20)`\\
+`Sbartest = Nested_Stats_Sbar(ehat1, ehat2, lam20, tau0)`\\
 
-It is note here, lam10 and lam20 correpond to the user-define fraction of recursive residuals used for the computation of test statistics. Tau0 is the fraction to determine the user-chosen range of lam10 over which the average is taken. Normally speaking, all of them should be something within 0 and 1.
+It is note here, lam10 and lam20 correpond to the user-define fraction of recursive residuals used for the computation of test statistics. Tau0 is the fraction to determine the user-chosen range of lam10 over which the average is taken. Normally speaking, all of them should be something within 0 and 1 and lam10 should not equal to lam20. If we set $lam10 = 1, lam20 = 0.5, tau0 = 0.8$, running the codes above and we should be able to obtain results as follows:
+
+
 
 
 
