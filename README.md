@@ -5,11 +5,11 @@ Funding from the ESRC through grant ES/W000989/1 is gratefully acknowledged.
 
 # Background
 In ET2023, Pitarakis proposed a series of test statistics for testing that two nested models have an equal out of sample predictive accuracy (null hypothesis). 
-Informally: consider two competing (nested) models given by (ET 1) and (ET 2) in the paper and suppose that you wish to test the null that 
-$MSE01 = MSE02$ vs $MSE01 > MSE02$. 
-Once one obtains the out-of-sample forecast errors associated with each model (see below) one feeds them in the test statistic (ET 15) and (ET 16) which are shown to be asymptotically normally distributed. There is also an adjusted version of each of these test statistics discussed below.
+Informally: consider two competing (nested) models given by Model 1 (smaller one) and Model 2 (larger one) and suppose that you wish to test the null that 
+$MSE_1 = MSE_2$ vs $MSE_1 > MSE_2$. 
+Once one obtains the out-of-sample forecast errors associated with each model (see below) one feeds them in the test statistic $S_0$ and $S_{Bar}$ which are shown to be asymptotically normally distributed. There is also an adjusted version of each of these test statistics discussed below.
 
-The paper builds forecasts in a recursive manner. Note also that for the paper mainly considers 1-step ahead prediction, while the codes available are adapted for h-steps ahead prediction:
+The program builds forecasts in a recursive manner. Note also that for the paper mainly considers 1-step ahead prediction, while the codes available are adapted for h-steps ahead prediction:
 $y_{t+h} = β_0 + βx_t + u_{t+h}$, (1)
 and suppose that there are n observations. 
 
