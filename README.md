@@ -44,7 +44,7 @@ For illustration, we consider 1 step ahead prediction and set $\pi_0 = 0.25$ (us
 
 This will give back two series of recursive errors with a length of $(250-62-1+1)=188$. 
 
-![R plot of ehat1 and ehat2](https://drive.google.com/file/d/1uLbyuy76MOg2seRK9r7Uq2FWvJ4-NQn1/view?usp=sharing)
+![R plot of ehat1 and ehat2](https://photos.app.goo.gl/xzaaaH1Be6CAkTbr8))
 
 
 
