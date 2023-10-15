@@ -24,24 +24,35 @@ For a version of the test statistic under conditional homskedasticity one could 
 
 For the version of the test statistic that corrects for heteroskedasticity one needs to use a robust Newey-West type estimator as in Deng and Perron (2008) for instance. 
 
-To sum-up: given $\hat{e}_1$, $\hat{e}_2$, $\lambda_1$, $\lambda_2$ the program should output the quantity $S_0$. Note that there should be two versions of this depending on which $\sigma$ one chooses to use in (ET 8). For each of these two versions (homoskedasticity, heteroskedasticity) there should also be two versions: one that uses the standard expression (of residual difference) in (ET 15) and one that is referred to as the adjusted version (of residual difference) that replaces $\hat{e}_2$ with $\bar{e}_{2}$ defined in (ET 33). To sum up the program should output 4 versions of (ET 15).
+To sum-up: given $\hat{e}_1$, $\hat{e}_2$, $\lambda_1$, $\lambda_2$ the program should output the quantity $S_0$. Note that there should be two versions of this depending on which $\sigma$ one chooses to use in (ET 8). For each of these two versions (homoskedasticity, heteroskedasticity) there should also be two versions: one that uses the standard expression (of residual difference) in (ET 15) and one that is referred to as the adjusted version (of residual difference) that replaces $\hat{e}_2$ with $\bar{e}_{2}$ defined in (ET 33). To sum up the program should output 4 versions of (ET 15). 
 
-The second test statistic ($S_{Bar}$) is defined (ET 9) and the code should follow similar principles to above.
+The second test statistic ($S_{Bar}$) is defined (ET 9) and the code should follow similar principles to above. 
 
 **Note that the corresponding p-values will be returned along with the test statistics, with the null hypothesis being the two models having identical predictive power.**
 
 # Code Example
+
+**Please first download and install the package *pretest* from Github. It is advised to use the *pretest_0.1.tar.gz* file for now.**
+
 Suppose we have a dataset *data* (see the *dummy_data_2.xlsx* file in data folder for example) that contains 3 variables, $y$, $x_1$ and $x_2$ of a length of 250. 
 
 For illustration, we consider 1 step ahead prediction and set $\pi_0 = 0.25$ (user could change it manually within 0 and 1 deciding what fraction of sample should be used). In this case, this means *round(250 x 0.25)* numbers of recursive residuals would be computed. **Note here, R would round up .5 to the nearest EVEN number, while MATLAB would push it far away from 0. Take our case for example, R would round it to 62, while MATLAB would round it to 63.**
 
-`ehat1 = recursive_hstep_fast($y$,$x1$,$\pi_0$,1)`
-`ehat2 = recursive_hstep_fast($y$,cbind($x1$,$x2$),$\pi_0$,1)`
+`library(pretest)`<br />
+`ehat1 = recursive_hstep_fast($y$,$x1$,$\pi_0$,1)`<br />
+`ehat2 = recursive_hstep_fast($y$,cbind($x1$,$x2$),$\pi_0$,1)`<br />
 
-This will give back two series of recursive errors with a length of $(250-62-1+1)=188$. Feeding these two series into our program would then calculate the test statistics accordingly.
+This will give back two series of recursive errors with a length of $(250-62-1+1)=188$. 
 
-`S0test = Nested_Stats_S0(ehat1, ehat2, lam10, lam20)`
-`Sbartest = Nested_Stats_Sbar(ehat1, ehat2, lam20, tau0)`
+![R plot of ehat1 and ehat2](https://drive.google.com/file/d/1uLbyuy76MOg2seRK9r7Uq2FWvJ4-NQn1/view?usp=sharing)
+
+
+
+
+Feeding these two series into our program would then calculate the test statistics accordingly.
+
+`S0test = Nested_Stats_S0(ehat1, ehat2, lam10, lam20)`<br />
+`Sbartest = Nested_Stats_Sbar(ehat1, ehat2, lam20, tau0)`<br />
 
 **It is note here, lam10 and lam20 correpond to the user-define fraction of recursive residuals used for the computation of test statistics. Tau0 is the fraction to determine the user-chosen range of lam10 over which the average is taken. Normally speaking, all of them should be something within 0 and 1 and lam10 should not equal to lam20.** 
 
