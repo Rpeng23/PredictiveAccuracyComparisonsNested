@@ -9,8 +9,8 @@ Informally: consider two competing (nested) models given by Model 1 (smaller one
 $MSE_1 = MSE_2$ vs $MSE_1 > MSE_2$. 
 Once one obtains the out-of-sample forecast errors associated with each model (see below) one feeds them in the test statistic $S_0$ and $S_{Bar}$ which are shown to be asymptotically normally distributed. There is also an adjusted version of each of these test statistics discussed below.
 
-The program builds forecasts in a recursive manner. Note also that for the paper mainly considers 1-step ahead prediction, while the codes available are adapted for h-steps ahead prediction:
-$y_{t+h} = β_0 + βx_t + u_{t+h}$, (1)
+The program builds forecasts in a recursive manner. Note also that for the paper mainly considers 1-step ahead prediction, while the codes available are adapted for h-steps ahead prediction: 
+**$y_{t+h} = β_0 + βx_t + u_{t+h}$, (1)** 
 and suppose that there are n observations. 
 
 Recursive forecasting (expanding window) involves choosing a sample location (say $k0 = [n*\pi_0]$ for some $\pi_0 ∈ (0, 1))$ to start the first estimation i.e., run OLS on (1) using $t = 1, . . . , k0$, obtain the corresponding LS estimate, say $\hat{β}(1: k0)$ and use it to forecast $y_{k0+h}$ as $\hat{y}$<sub>{k0+h}</sub> $= \hat{\beta}$(1: k0) $x_{k0}$. Next, rerun the same regression using $t = 1, . . . , k0 + 1$, get the updated LS estimate of $\hat{\beta}$ and form the forecast $\hat{y}$<sub>{k0+h+1}</sub> $= \hat{\beta}$(1: k0 + 1) $x_{k0+1}$. Repeat for all (feasible) $t$, i.e. the last forecast should be $\hat{y}$<sub>{n}</sub>$|n−h$. Once these forecasts have been obatained one can get the corresponding forecast errors as $e_{t+1}|t = y_{t+1} − \hat{y}_{t+1}|t$. 
