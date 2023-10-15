@@ -44,7 +44,7 @@ For illustration, we consider 1 step ahead prediction and set $\pi_0 = 0.25$ (us
 
 This will give back two series of recursive errors with a length of $(250-62-1+1)=188$. 
 
-![R plot of ehat1 and ehat2](https://photos.app.goo.gl/xzaaaH1Be6CAkTbr8))
+![R plot of ehat1 and ehat2](DummyData/ehat.png)
 
 
 
@@ -58,9 +58,27 @@ Feeding these two series into our program would then calculate the test statisti
 
 If we set $lam10 = 1, lam20 = 0.5, tau0 = 0.8$, running the codes above and we should be able to obtain results as follows:
 
+| Statistics name        | Test           | P-values  |
+| ---------------------- |:--------------:| ---------:|
+| $S_0$                  | 0.5111115      | 0.3046365 |
+| $S_0^{adj}$            | 0.6801042      | 0.2482192 |
+| $S_0^{NW}$             | 0.4640591      | 0.3213027 |
+| $S_0^{NW,adj}$         | 0.6174944      | 0.2684543 |
+| $S_{bar}$              | 0.4746596      | 0.3175148 |
+| $S_{bar}^{adj}$        | 0.6587367      | 0.2550324 |
+| $S_{bar}^{NW}$         | 0.4309629      | 0.3332477 |
+| $S_{bar}^{NW,adj}$     | 0.598094       | 0.2748886 |
 
+That is, based on our test, the two linear models are different in terms of predictive power. For the aim of comparison with existing methods, such as DM and CW, one could also run their test using the *dm_cw* functions likewise:
 
+`dm_cw_test = dm_cw(ehat1, ehat2)`<br />
 
+This would give us results as follows:
 
-
+| Statistics name        | Test           | P-values  |
+| ---------------------- |:--------------:| ---------:|
+| $dm$                   | -1.535945      | 0.9377241 |
+| $dm^{NW}$              | -1.888479      | 0.9705192 |
+| $cw$                   | -0.7598933     | 0.7763408 |
+| $cw^{NW}$              | -0.8178937     | 0.793291  |
 
