@@ -41,8 +41,8 @@ Suppose we have a dataset *data* (see the *dummy_data_2.xlsx* file in data folde
 For illustration, we consider 1 step ahead prediction and set $\pi_0 = 0.25$ (user could change it manually within 0 and 1 deciding what fraction of sample should be used). In this case, this means *round(250 x 0.25)* numbers of recursive residuals would be computed. **Note here, R would round up .5 to the nearest EVEN number, while MATLAB would push it far away from 0. Take our case for example, R would round it to 62, while MATLAB would round it to 63.**
 
 `library(pretest)`<br />
-`ehat1 = recursive_hstep_fast($y$,$x1$,$\pi_0$,1)`<br />
-`ehat2 = recursive_hstep_fast($y$,cbind($x1$,$x2$),$\pi_0$,1)`<br />
+`ehat1 = recursive_hstep_fast(y,x1,pi0,1)`<br />
+`ehat2 = recursive_hstep_fast(y,cbind(x1,x2),pi0,1)`<br />
 
 This will give back two series of recursive errors with a length of $(250-62-1+1)=188$. 
 
