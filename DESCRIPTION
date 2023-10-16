@@ -1,8 +1,8 @@
 Package: pretest
 Title: A Novel Approach to Predictive Accuracy Testing in Nested Environments
-Version: 0.1
+Version: 0.2
 Authors@R: 
-    person("Rong", "Peng", , "r.peng@soton.ac.com", role = c("aut", "cre"))
+    person("Rong", "Peng", , "r.peng@soton.ac.uk", role = c("aut", "cre"))
 Description: This repository contains the codes for using the predictive accuracy comparison tests developed in Pitarakis, J. (2023). "A novel approach to predictive accuracy testing in nested environments", Econometric Theory, 2023.
 License: GPL-3
 Encoding: UTF-8
