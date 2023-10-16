@@ -19,7 +19,7 @@ Recursive forecasting (expanding window) involves choosing a sample location (sa
 
 Note that in this example this should give you a total of ($n − k0 - h + 1$) forecast error observations. Suppose you do that across two competing models and obtain two sequences of one-step ahead forecast errors, say $\hat{e}_1$ and $\hat{e}_2$. These are the inputs subsequently used in the test statistics developed in paper.
 
-# The test statistics $S_0$ and $S_{Bar}$
+# The test statistics S0 and SBar
 Suppose you have obtained the sequence of forecast errors associated with the two models. These are then used as inputs to obtain the numerator of the first test statistics $S_0$ as stated in (ET 6). Note that this statistic requires 2 ad-hoc inputs from the user ($\lambda_1$ and $\lambda_2$). So the code should expect these as inputs as well in addition to $\hat{e}_1$ and $\hat{e}_2$. Then, the test statistic also requires a suitable normaliser generically referred to as $\sigma^2$ in (ET 8). 
 
 For a version of the test statistic under conditional homskedasticity one could simply use the expression at the top of page (ET 9) and referred to as $\sigma^2$ hom. It is usually advisable to use the residuals from the larger model to form the $\eta$ (i.e. use $\hat{e}_2$ instead of $\hat{e}_1$). 
