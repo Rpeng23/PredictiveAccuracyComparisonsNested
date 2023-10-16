@@ -26,7 +26,7 @@ For a version of the test statistic under conditional homskedasticity one could 
 
 For the version of the test statistic that corrects for heteroskedasticity one needs to use a robust Newey-West type estimator as in Deng and Perron (2008) for instance. 
 
-To sum-up: given $\hat{e}_1$, $\hat{e}_2$, $\lambda_1$, $\lambda_2$ the program should output the quantity $S_0$. Note that there should be two versions of this depending on which $\sigma$ one chooses to use in (ET 8). For each of these two versions (homoskedasticity, heteroskedasticity) there should also be two versions: one that uses the standard expression (of residual difference) in (ET 15) and one that is referred to as the adjusted version (of residual difference) that replaces $\hat{e}_2$ with $\bar{e}_{2}$ defined in (ET 33). To sum up the program should output 4 versions of (ET 15). 
+To sum-up: given $\hat{e}_1$, $\hat{e}_2$, $\lambda_1$, $\lambda_2$ the program should output the quantity $S_0$. Note that there should be two versions of this depending on which $\sigma$ one chooses to use in (ET 8). For each of these two versions (homoskedasticity, heteroskedasticity) there should also be two versions: one that uses the standard expression (of residual difference) in (ET 15) and one that is referred to as the adjusted version (of residual difference) that replaces $\hat{e}_2$ as defined in (ET 33). To sum up the program should output 4 versions of (ET 15). 
 
 The second test statistic ($S_{Bar}$) is defined (ET 9) and the code should follow similar principles to above. 
 
