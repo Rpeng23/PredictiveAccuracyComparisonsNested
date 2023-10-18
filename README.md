@@ -56,7 +56,7 @@ Feeding these two series into our program would then calculate the test statisti
 `S0test = Nested_Stats_S0(ehat1, ehat2, lam10, lam20)`<br />
 `Sbartest = Nested_Stats_Sbar(ehat1, ehat2, lam20, tau0)`<br />
 
-**It is note here, lam10 and lam20 correpond to the user-define fraction of recursive residuals used for the computation of test statistics. Tau0 is the fraction to determine the user-chosen range of lam10 over which the average is taken. Normally speaking, all of them should be something within 0 and 1 and lam10 should not equal to lam20.** 
+**It is noted here, lam10 and lam20 correpond to the user-define fraction of recursive residuals used for the computation of test statistics. Tau0 is the fraction to determine the user-chosen range of lam10 over which the average is taken. Normally speaking, all of them should be something within 0 and 1 and lam10 should not equal to lam20.** 
 
 If we set $lam10 = 1, lam20 = 0.5, tau0 = 0.8$, running the codes above and we should be able to obtain results as follows:
 
