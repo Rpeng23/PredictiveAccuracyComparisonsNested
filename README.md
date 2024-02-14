@@ -34,7 +34,7 @@ The second test statistic ($S_{Bar}$) is defined (ET 9) and the code should foll
 
 # Code Example
 
-**Please first download and install the package *pretest* from Github. It is advised to use the *pretest_0.2.tar.gz* file for now.**
+**Please first download and install the package *pretest* from Github (via *pretest_0.2.tar.gz*). It is also available on CRAN now.**
 
 Suppose we have a dataset *data* (see the *dummy_data_2.xlsx* file in data folder for example) that contains 3 variables, $y$, $x_1$ and $x_2$ of a length of 250. 
 
